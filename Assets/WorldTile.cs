@@ -3,10 +3,18 @@ using System.Collections;
 
 public class WorldTile : MonoBehaviour {
 
-        public WorldTile Up;
-        public WorldTile Down;
-        public WorldTile Left;
-        public WorldTile Right;
+        public struct Coord
+        {
+            public int X;
+            public int Y;
+        }
+
+        public Coord coord;
+
+        public GameObject Up;
+        public GameObject Down;
+        public GameObject Left;
+        public GameObject Right;
 
         private GameObject WorldMap; 
 
@@ -14,8 +22,6 @@ public class WorldTile : MonoBehaviour {
 	void Start () {
             WorldMap = GameObject.Find("Map");
             transform.parent = WorldMap.transform;
-            //transform.Translate(0, 0, 10);
-            //transform.Rotate(90, 0, 0);
 	}
 	
 	// Update is called once per frame
