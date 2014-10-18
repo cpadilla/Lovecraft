@@ -10,6 +10,7 @@ public partial class World : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+            transform.position = new Vector3(0,0,0);
             currentTile = (GameObject)Instantiate(currentTile, transform.position, transform.rotation);
             //player = GameObject.Find("Player");
 	}
