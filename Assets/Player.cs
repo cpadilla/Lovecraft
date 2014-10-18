@@ -13,8 +13,6 @@ public class Player : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-            
-
             rigidbody2D.velocity = new Vector2(Mathf.Lerp(0, Input.GetAxis("Horizontal") * Speed, 0.8f),
                                                    Mathf.Lerp(0, Input.GetAxis("Vertical") * Speed, 0.8f));
 	}
