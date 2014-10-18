@@ -8,7 +8,7 @@ public class purpleAI : MonoBehaviour {
 	///Inizialization///
 	void Start ()
 	{
-
+		target = GameObject.Find("Player").transform;
 	}
 	
 	
