@@ -15,13 +15,20 @@ public class purpleAI : MonoBehaviour {
 	///Fixed Update///
 	void Update ()
 	{
-
+		Vector3 dir = target.position - transform.position;
+		float angle = Mathf.Atan2(dir.y,dir.x) * Mathf.Rad2Deg;
+		transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+		if (Vector3.Distance(transform.position,target.position)>0.5f){
+			transform.Translate(new Vector3(speed* Time.deltaTime,0,0));
+		}
+		/* Original movement
 		transform.LookAt(target.position);
 		transform.Rotate(new Vector3(0,-90,0),Space.Self);//correcting the original rotation
 
 		if (Vector3.Distance(transform.position,target.position)>0.5f){
 			transform.Translate(new Vector3(speed* Time.deltaTime,0,0));
 		}
+		*/
 		//move towards the player
 		/*
 		if (Vector3.Distance(transform.position,target.position)>0.5f){

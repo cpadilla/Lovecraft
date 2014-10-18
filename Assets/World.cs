@@ -6,12 +6,12 @@ public partial class World : MonoBehaviour {
 
         //List<Plane> 
         public GameObject currentTile;
-        private GameObject player;
+        //private GameObject player;
 
 	// Use this for initialization
 	void Start () {
             currentTile = (GameObject)Instantiate(currentTile, transform.position, transform.rotation);
-            player = GameObject.Find("Player");
+            //player = GameObject.Find("Player");
 	}
 	
 	// Update is called once per frame
