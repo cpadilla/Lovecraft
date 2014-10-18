@@ -5,15 +5,21 @@ using System.Collections.Generic;
 public partial class World : MonoBehaviour {
 
         //List<Plane> 
-        public GameObject startTile;
+        public GameObject currentTile;
+        private GameObject player;
 
 	// Use this for initialization
 	void Start () {
-            startTile = (GameObject)Instantiate(startTile, transform.position, transform.rotation);
+            currentTile = (GameObject)Instantiate(currentTile, transform.position, transform.rotation);
+            player = GameObject.Find("Player");
 	}
 	
 	// Update is called once per frame
 	void Update () {
-	
+            //print("player X:      " + player.transform.position.x);
+            //print("player Y: " + player.transform.position.y);
+            //print("player Z: " + player.transform.position.z);
+            //print("currentTile X: " + currentTile.transform.position.x);
+            
 	}
 }
