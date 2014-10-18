@@ -11,7 +11,7 @@ public class Inventory : MonoBehaviour
 	// Use this for initialization
 	void Start () 
 	{
-		Inv = new bool[48];
+		Inv = new bool[45];
 		isOpen = true;
 	}
 
@@ -27,8 +27,8 @@ public class Inventory : MonoBehaviour
 			}
 		else 
 			{
-			Bag.SetActive (true);
-			isOpen = true;
+				Bag.SetActive (true);
+				isOpen = true;
 			}
 		}
 
