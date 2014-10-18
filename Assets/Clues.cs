@@ -1,11 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Clues : MonoBehaviour {
+public class Clues : MonoBehaviour 
+{
 
 	// Use this for initialization
-	void Start () {
-	
+	void Start () 
+	{
+
 	}
 	
 	// Update is called once per frame
@@ -14,9 +16,13 @@ public class Clues : MonoBehaviour {
 	}
 	void OnTriggerEnter2D(Collider2D col) 
 	{
-		if (gameObject.tag == "Clue")
+		if (col.tag == "Player")
 		{
-			Destroy(gameObject);
+			Inventory I = GameObject.Find ("Inventory").GetComponent<Inventory> ();
+			int x = int.Parse (this.gameObject.name.Substring (5));
+			Debug.Log (x);
+			I.Inv [x] = true;
 		}
+
 	}
 }
