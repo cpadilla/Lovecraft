@@ -6,7 +6,7 @@ public class redAI : MonoBehaviour {
 	public float speed = 2f;
 	// Use this for initialization
 	void Start () {
-	
+		target = GameObject.Find("Player").transform;
 	}
 	
 	// Update is called once per frame

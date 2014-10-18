@@ -39,6 +39,11 @@ public class Player : MonoBehaviour {
 
         void OnTriggerExit2D(Collider2D obj)
         {
+		if (gameObject.tag == "Clue")
+		{
+			Destroy(gameObject);
+		}
+
             // if obj == "Room" Playerentering rooom = true
             if (obj.tag == "Room") EnteringRoom = false;
             //print("Hit");
