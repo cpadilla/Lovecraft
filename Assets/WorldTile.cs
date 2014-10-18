@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class WorldTile : MonoBehaviour {
-
+	public GameObject spawner;
         public struct Coord
         {
             public int X;

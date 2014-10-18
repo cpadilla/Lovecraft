@@ -11,7 +11,6 @@ public class EnemySpawner : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		int Rand = Random.Range(0,99);
-		WorldTile
 		Vector3 location = new Vector3(Random.Range(-3,3),Random.Range(-2,2),0);
 		Quaternion rotation = Quaternion.LookRotation(Vector3.zero);
 		if(Rand < 40)
