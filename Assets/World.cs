@@ -22,4 +22,9 @@ public partial class World : MonoBehaviour {
             //print("currentTile X: " + currentTile.transform.position.x);
             
 	}
+
+        void OnTriggerEnter2D(Collider2D obj)
+        {
+            print("Hit");
+        }
 }
