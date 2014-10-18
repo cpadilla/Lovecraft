@@ -2,25 +2,26 @@
 using System.Collections;
 
 public class purpleAI : MonoBehaviour {
-	float speed = 3f;
+	public Transform target;//set target from inspector instead of looking in Update
+	public float speed = 3f;
 	
 	
 	///Inizialization///
 	void Start ()
 	{
-        //enemy = GameObject.FindGameObjectsWithTag("Enemy");
-        //player = GameObject.FindGameObjectsWithTag("Player");
+
 	}
 	
 	
 	///Fixed Update///
-	void FixedUpdate ()
+	void Update ()
 	{
-		//Vector2.Distance = enemy.transform.position - player.transform.position
-        //range = Vector2.Distance(enemy.transform.position, player.transform.position);
-        //if(range <= 15f)
-        //{
-        //    transform.Translate(Vector2.MoveTowards(enemy.transform.position, player.transform.position, range) * speed * Time.deltaTime);
-        //}
+		transform.LookAt(target.position);
+		transform.Rotate(new Vector3(0,-90,0),Space.Self);//correcting the original rotation
+
+		//move towards the player
+		if (Vector3.Distance(transform.position,target.position)>1f){//move if distance from target is greater than 1
+			transform.Translate(new Vector3(speed* Time.deltaTime,0,0) );
+		}
 	}
 }
