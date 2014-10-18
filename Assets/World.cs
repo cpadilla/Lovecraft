@@ -32,7 +32,8 @@ public partial class World : MonoBehaviour {
             {
                 foreach (WorldTile tile in gridMap)
                 {
-                    if (tile.coord.X == x && tile.coord.Y == y) return tile;
+                    if (tile != null && tile.coord.X == x && tile.coord.Y == y)
+                        return tile;
                 }
 
             }
