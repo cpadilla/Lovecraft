@@ -11,5 +11,6 @@ public class ClueSpawner : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		GameObject Inv = GameObject.Find("Inventory");
+		//Inv.GetComponent<
 	}
 }
