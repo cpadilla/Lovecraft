@@ -9,7 +9,7 @@ public class bossAI : MonoBehaviour {
 	int period = 0;
 	// Use this for initialization
 	void Start () {
-	
+		target = GameObject.Find("Player").transform;
 	}
 	
 	// Update is called once per frame
