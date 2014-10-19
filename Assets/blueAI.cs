@@ -5,20 +5,15 @@ public class blueAI : MonoBehaviour {
 	public float speed = 2f;
 	public float Distance = 10f;
 	float Travel = 0;
-	private WorldTile tile;
-	private EnemySpawner Spawner;
+	//private WorldTile tile;
 	int x,y;
 	//float rotate = 0;
 	// Use this for initialization
 	void Start () {
 		x = (int)(transform.position.x/8);
 		y = (int)(transform.position.y/6);
-		tile = World.TryGetTile(x,y);
-		if(tile.GetComponentInChildren<EnemySpawner>() != null)
-			Spawner = tile.GetComponentInChildren<EnemySpawner>();
-		else
-			Spawner = tile.GetComponent<EnemySpawner>();
-		gameObject.transform.parent = Spawner.transform;
+		//tile = World.TryGetTile(x,y);
+		//gameObject.transform.parent = tile.transform;
 	}
 	// Update is called once per frame
 	void Update (){

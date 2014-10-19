@@ -59,6 +59,6 @@ public partial class World : MonoBehaviour {
 
         void OnTriggerEnter2D(Collider2D obj)
         {
-            print("Hit");
+            //print("Hit");
         }
 }

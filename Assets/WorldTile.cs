@@ -22,37 +22,39 @@ public class WorldTile : MonoBehaviour {
 	void Start () {
 	    WorldMap = GameObject.Find("Map");
 	    transform.parent = WorldMap.transform;
-		SeedTile();
+		//SeedTile();
 	}
 	
 	// Update is called once per frame
 	void Update () {
 	
 	}
+	/*
 	void SeedTile(){
 		int Rand = Random.Range(0,99);
 		if(Rand < 25){
 			Vector3 location = transform.position;
-			Quaternion rotation = Quaternion.LookRotation(Vector3.zero);
+			Quaternion rotation = transform.rotation;
 			//spawn clue spawner
 		}
 		Rand = Random.Range(0,99);
 		if(Rand < 50){
 			Vector3 location = transform.position;
-			Quaternion rotation = Quaternion.LookRotation(Vector3.zero);
+			Quaternion rotation = transform.rotation;
 			Instantiate(spawner,location,rotation);
 		}
 		Rand = Random.Range(0,99);
 		if(Rand < 50){
 			Vector3 location = transform.position;
-			Quaternion rotation = Quaternion.LookRotation(Vector3.zero);
+			Quaternion rotation = transform.rotation;
 			Instantiate(spawner,location,rotation);
 		}
 		Rand = Random.Range(0,99);
 		if(Rand < 50){
 			Vector3 location = transform.position;
-			Quaternion rotation = Quaternion.LookRotation(Vector3.zero);
+			Quaternion rotation = transform.rotation;
 			Instantiate(spawner,location,rotation);
 		}
 	}
+	*/
 }

@@ -9,27 +9,24 @@ public class shamanAI : MonoBehaviour {
 	int max = 3;
 	int period = 0;
 	public bool Active = false;
-	private WorldTile tile;
-	private EnemySpawner Spawner;
+	//private WorldTile tile;
 	int x,y;
+	Vector3 position;
+	Quaternion rotation;
 	// Use this for initialization
 	void Start () {
 		x = (int)(transform.position.x/8);
 		y = (int)(transform.position.y/6);
-		tile = World.TryGetTile(x,y);
-		if(tile.GetComponentInChildren<EnemySpawner>() != null)
-			Spawner = tile.GetComponentInChildren<EnemySpawner>();
-		else
-			Spawner = tile.GetComponent<EnemySpawner>();
-		gameObject.transform.parent = Spawner.transform;
+		position = transform.position;
+		rotation = transform.rotation;
+		//tile = World.TryGetTile(x,y);
+		//gameObject.transform.parent = tile.transform;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		if(Player.location.X == x && Player.location.Y == y){
 			if(Active){
-				Vector3 position = transform.parent.position;
-				Quaternion rotation = transform.parent.rotation;
 				if(count <= max && period > 100){
 					//position.x += Random.Range(1,2);
 					period = 0;

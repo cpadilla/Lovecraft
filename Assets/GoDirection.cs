@@ -193,7 +193,7 @@ public class GoDirection : MonoBehaviour
 
     GameObject CreateNewRoom(float x, float y)
     {
-        print("New Room Created!");
+        //print("New Room Created!");
         // make new tile
         Vector3 newTilePos = new Vector3(x, y, 0);
         GameObject newTilePref = (GameObject)Instantiate(Tile, newTilePos, camera.transform.rotation);

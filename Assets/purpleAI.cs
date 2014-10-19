@@ -4,8 +4,7 @@ using System.Collections;
 public class purpleAI : MonoBehaviour {
 	public Transform target;//set target from inspector instead of looking in Update
 	public float speed = 2f;
-	private WorldTile tile;
-	private EnemySpawner Spawner;
+	//private WorldTile tile;
 	int x,y;
 	//int count=0;
 	///Inizialization///
@@ -14,12 +13,8 @@ public class purpleAI : MonoBehaviour {
 		target = GameObject.Find("Player").transform;
 		x = (int)(transform.position.x/8);
 		y = (int)(transform.position.y/6);
-		tile = World.TryGetTile(x,y);
-		if(tile.GetComponentInChildren<EnemySpawner>() != null)
-			Spawner = tile.GetComponentInChildren<EnemySpawner>();
-		else
-			Spawner = tile.GetComponent<EnemySpawner>();
-		gameObject.transform.parent = Spawner.transform;
+		//tile = World.TryGetTile(x,y);
+		//gameObject.transform.parent = tile.transform;
 	}
 	
 	
