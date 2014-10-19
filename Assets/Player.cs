@@ -12,7 +12,7 @@ public class Player : MonoBehaviour {
 	public static GoDirection LastStep;
     
 	public float Speed = 5f;
-	public static int Health;
+	public static int Health = 10;
 
 	// Use this for initialization
 	void Start () {

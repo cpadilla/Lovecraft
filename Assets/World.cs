@@ -17,6 +17,7 @@ public partial class World : MonoBehaviour {
             wtcurr.coord.X = 0;
             wtcurr.coord.Y = 0;
             gridMap.Add(wtcurr);
+            Player.Health = 10;
             //player = GameObject.Find("Player");
 	}
 	
@@ -25,7 +26,40 @@ public partial class World : MonoBehaviour {
             //camera.transform.Translate(8 * Player.location.X, 6 * Player.location.Y, 0);
             camera.transform.position = new Vector3(8 * Player.location.X, 6 * Player.location.Y, -10);
             //print(string.Format("Player Location: {0} : {1}", Player.location.X, Player.location.Y));
+            if (Player.Health <= 0)
+            {
+                Reset();
+            }
 	}
+
+        void Reset()
+        {
+            // Destroy All Tiles
+            foreach(WorldTile w in gridMap)
+            {
+                Destroy(w.gameObject);
+            }
+
+            // Add new tile
+            currentTile = (GameObject)Instantiate(currentTile, transform.position, transform.rotation);
+            WorldTile AWholeNewWorld = currentTile.GetComponent<WorldTile>();
+            AWholeNewWorld.coord.X = 0;
+            AWholeNewWorld.coord.Y = 0;
+            gridMap.Add(AWholeNewWorld);
+
+            GameObject t = GameObject.Find("Inventory");
+            Inventory inv = t.GetComponent<Inventory>();
+            //for (bool item in inv.Inv)
+            for (int i = 0; i < inv.Inv.Length; i++ )
+            {
+                inv.Inv[i] = false;
+            }
+
+            //Player.Health = 10;
+            Player.location.X = 0;
+            Player.location.X = 0;
+
+        }
 
         public static WorldTile TryGetTile(int x, int y)
         {
