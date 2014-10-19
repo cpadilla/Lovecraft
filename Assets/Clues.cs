@@ -3,6 +3,8 @@ using System.Collections;
 
 public class Clues : MonoBehaviour 
 {
+        public int Number;
+        public string ClueText;
 
 	// Use this for initialization
 	void Start () 
