@@ -13,7 +13,7 @@ public class BulletPlayer : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		transform.position += speed * transform.right;
+		transform.position += speed * transform.up;
 		//transform.Translate(new Vector3(speed* Time.deltaTime,0,0));
 		if (Time.time - startTime >= SecondsUntilDestroy) {
 			Destroy(this.gameObject);
