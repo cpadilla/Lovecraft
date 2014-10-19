@@ -35,19 +35,21 @@ public class WorldTile : MonoBehaviour {
 			Vector3 location = transform.position;
 			Quaternion rotation = Quaternion.LookRotation(Vector3.zero);
 			//spawn clue spawner
-		}else if(Rand < 75){
+		}
+		Rand = Random.Range(0,99);
+		if(Rand < 50){
 			Vector3 location = transform.position;
 			Quaternion rotation = Quaternion.LookRotation(Vector3.zero);
 			Instantiate(spawner,location,rotation);
 		}
 		Rand = Random.Range(0,99);
-		if(Rand < 75){
+		if(Rand < 50){
 			Vector3 location = transform.position;
 			Quaternion rotation = Quaternion.LookRotation(Vector3.zero);
 			Instantiate(spawner,location,rotation);
 		}
 		Rand = Random.Range(0,99);
-		if(Rand < 75){
+		if(Rand < 50){
 			Vector3 location = transform.position;
 			Quaternion rotation = Quaternion.LookRotation(Vector3.zero);
 			Instantiate(spawner,location,rotation);
