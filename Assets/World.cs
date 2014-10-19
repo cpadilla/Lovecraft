@@ -28,7 +28,7 @@ public partial class World : MonoBehaviour {
             //print(string.Format("Player Location: {0} : {1}", Player.location.X, Player.location.Y));
             if (Player.Health <= 0)
             {
-                Reset();
+                //Reset();
             }
 	}
 
@@ -55,7 +55,7 @@ public partial class World : MonoBehaviour {
                 inv.Inv[i] = false;
             }
 
-            //Player.Health = 10;
+            Player.Health = 10;
             Player.location.X = 0;
             Player.location.X = 0;
 
