@@ -18,11 +18,9 @@ public class Clues : MonoBehaviour
 	{
 		if (col.tag == "Player")
 		{
-			Inventory I = GameObject.Find ("Inventory").GetComponent<Inventory> ();
-			int x = int.Parse (this.gameObject.name.Substring (5));
-			Debug.Log (x);
-			I.Inv [x] = true;
+			Inventory I = GameObject.Find("Inventory").GetComponent<Inventory> ();
+			int x = int.Parse(gameObject.name.Substring(6));
+			I.Inv [x] = true;		
 		}
-
 	}
 }
