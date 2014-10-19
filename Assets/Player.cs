@@ -12,13 +12,13 @@ public class Player : MonoBehaviour {
 	public static GoDirection LastStep;
     
 	public float Speed = 5f;
-	int Health = 10;
+	public static int Health;
 
 	// Use this for initialization
 	void Start () {
             location.X = 0;
             location.Y = 0;
-			
+			Health = 10;
 	}
 	
 	// Update is called once per frame
@@ -38,8 +38,8 @@ public class Player : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D obj){
     	if (obj.tag == "Room") EnteringRoom = true;
 	}
-	void OnCollisionEnter2D(Collider2D obj){
-		if(obj.tag == "Enemy") Health--;
-		if(obj.tag == "Bullet") Health--;
+	void OnCollisionEnter2D(Collision2D obj){
+		if(obj.gameObject.tag == "Enemy") Health--;
+		if(obj.gameObject.tag == "Bullet") Health--;
 	}
 }
