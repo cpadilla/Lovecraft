@@ -22,7 +22,8 @@ public class Clues : MonoBehaviour
 		if (col.tag == "Player")
 		{
 			Inventory I = GameObject.Find("Inventory").GetComponent<Inventory> ();
-			int x = int.Parse(gameObject.name.Substring(6));
+			//int x = int.Parse(gameObject.name.Substring(6));
+			int x = Number;
 			I.Inv [x] = true;
 
                     try
