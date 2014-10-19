@@ -5,6 +5,7 @@ public class Clues : MonoBehaviour
 {
         public int Number;
         public string ClueText;
+        public AudioSource Sound;
 
 	// Use this for initialization
 	void Start () 
@@ -22,7 +23,13 @@ public class Clues : MonoBehaviour
 		{
 			Inventory I = GameObject.Find("Inventory").GetComponent<Inventory> ();
 			int x = int.Parse(gameObject.name.Substring(6));
-			I.Inv [x] = true;		
+			I.Inv [x] = true;
+
+                    try
+                    {
+                        Sound.Play();
+                    }
+                    catch { }
 		}
 	}
 	void OnTriggerExit2D(Collider2D obj){
