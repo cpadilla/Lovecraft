@@ -24,6 +24,7 @@ public partial class World : MonoBehaviour {
 	void Update () {
             //camera.transform.Translate(8 * Player.location.X, 6 * Player.location.Y, 0);
             camera.transform.position = new Vector3(8 * Player.location.X, 6 * Player.location.Y, -10);
+            //print(string.Format("Player Location: {0} : {1}", Player.location.X, Player.location.Y));
 	}
 
         public static WorldTile TryGetTile(int x, int y)
@@ -32,7 +33,8 @@ public partial class World : MonoBehaviour {
             {
                 foreach (WorldTile tile in gridMap)
                 {
-                    if (tile.coord.X == x && tile.coord.Y == y) return tile;
+                    if (tile != null && tile.coord.X == x && tile.coord.Y == y)
+                        return tile;
                 }
 
             }

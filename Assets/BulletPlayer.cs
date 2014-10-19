@@ -1,13 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class bullet : MonoBehaviour {
+public class BulletPlayer : MonoBehaviour {
 	float speed = .05f;
 	float SecondsUntilDestroy = 2;
 	float startTime;
 	// Use this for initialization
 	void Start () {
-		gameObject.tag = "Bullet";
+		gameObject.tag = "BulletPlayer";
 		startTime = Time.time; 
 	}
 	
@@ -21,6 +21,6 @@ public class bullet : MonoBehaviour {
 	}
 	void OnTriggerEnter2D(Collider2D obj)
 	{
-		if(obj.tag == "Player")	Destroy(this.gameObject);
+		if(obj.tag == "Enemy")	Destroy(this.gameObject);
 	}
 }

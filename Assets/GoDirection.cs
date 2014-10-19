@@ -36,8 +36,8 @@ public class GoDirection : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D obj)
     {
-        // don't update player if we're blocked off
-        if (obj.tag == "Player")
+        // if the obj is the player and this trigger is enabled
+        if (obj.tag == "Player" && enabled)
         {
             camera = Camera.main;
             world = camera.GetComponent<World>();
@@ -49,58 +49,71 @@ public class GoDirection : MonoBehaviour
             switch (Direction)
             {
                 case "North":
-                    nextRoom = World.TryGetTile(Player.location.X, Player.location.Y + 1);
-                    if (nextRoom == null) CreateNewRoom(8 * Player.location.X, 6 * (Player.location.Y + 1));
+                    //nextRoom = World.TryGetTile(Player.location.X, Player.location.Y + 1);
+                    //if (nextRoom == null) CreateNewRoom(8 * Player.location.X, 6 * (Player.location.Y + 1));
+                    nextRoom = World.TryGetTile(room.X, room.Y + 1);
+                    if (nextRoom == null) CreateNewRoom(8 * room.X, 6 * (room.Y + 1));
                     break;
                 case "East":
-                    nextRoom = World.TryGetTile(Player.location.X + 1, Player.location.Y);
-                    if (nextRoom == null) CreateNewRoom(8 * (Player.location.X + 1), 6 * Player.location.Y);
+                    //nextRoom = World.TryGetTile(Player.location.X + 1, Player.location.Y);
+                    //if (nextRoom == null) CreateNewRoom(8 * (Player.location.X + 1), 6 * Player.location.Y);
+                    nextRoom = World.TryGetTile(room.X + 1, room.Y);
+                    if (nextRoom == null) CreateNewRoom(8 * (room.X + 1), 6 * room.Y);
                     break;
                 case "South":
-                    nextRoom = World.TryGetTile(Player.location.X, Player.location.Y - 1);
-                    if (nextRoom == null) CreateNewRoom(8 * Player.location.X, 6 * (Player.location.Y - 1));
+                    //nextRoom = World.TryGetTile(Player.location.X, Player.location.Y - 1);
+                    //if (nextRoom == null) CreateNewRoom(8 * Player.location.X, 6 * (Player.location.Y - 1));
+                    nextRoom = World.TryGetTile(room.X, room.Y - 1);
+                    if (nextRoom == null) CreateNewRoom(8 * room.X, 6 * (room.Y - 1));
                     break;
                 case "West":
-                    nextRoom = World.TryGetTile(Player.location.X - 1, Player.location.Y);
-                    if (nextRoom == null) CreateNewRoom(8 * (Player.location.X - 1), 6 * Player.location.Y);
+                    //nextRoom = World.TryGetTile(Player.location.X - 1, Player.location.Y);
+                    //if (nextRoom == null) CreateNewRoom(8 * (Player.location.X - 1), 6 * Player.location.Y);
+                    nextRoom = World.TryGetTile(room.X - 1, room.Y);
+                    if (nextRoom == null) CreateNewRoom(8 * (room.X - 1), 6 * room.Y);
                     break;
             }
             #endregion
 
-            // Disable trigger
-            enabled = false;
-
             // If player is leaving this room
-            if ((Player.LastStep != null &&
-                Player.LastStep.room.X == room.X &&
+            if (enabled &&
+                Player.LastStep != null &&
+                (Player.LastStep.room.X == room.X &&
                 Player.LastStep.room.Y == room.Y) == false)
             {
                 // player entering room
                 switch (Direction)
                 {
                     case "North":
-                        Player.location.Y++;
-                        break;
-                    case "East":
-                        Player.location.X++;
-                        break;
-                    case "South":
                         Player.location.Y--;
                         break;
-                    case "West":
+                    case "East":
                         Player.location.X--;
+                        break;
+                    case "South":
+                        Player.location.Y++;
+                        break;
+                    case "West":
+                        Player.location.X++;
                         break;
                 }
 
                 Player.LastStep = this;
             }
             // else if 2 steps in the same room
-            else if (Player.LastStep != null &&
+            else if (enabled &&
+                Player.LastStep != null &&
                 Player.LastStep.room.X == room.X &&
                 Player.LastStep.room.Y == room.Y)
             {
                 Player.LastStep.enabled = true;
             }
+
+            // Last step is this
+            Player.LastStep = this;
+
+            // Disable trigger
+            enabled = false;
 
             #region Old code
             // if new area
@@ -184,18 +197,23 @@ public class GoDirection : MonoBehaviour
         // make new tile
         Vector3 newTilePos = new Vector3(x, y, 0);
         GameObject newTilePref = (GameObject)Instantiate(Tile, newTilePos, camera.transform.rotation);
+        WorldTile newwt = newTilePref.GetComponent<WorldTile>();
+        newwt.coord.X = (int)(x / 8f);
+        newwt.coord.Y = (int)(y / 6f);
+        World.gridMap.Add(newwt);
         return newTilePref;
     }
 
     void OnTriggerExit2D(Collider2D obj)
     {
         //Player.EnteringRoom = false;
-        if (Player.LastStep != null &&
-            Player.LastStep.room.X == room.X &&
-            Player.LastStep.room.Y == room.Y)
-        {
-            Player.LastStep.enabled = true;
-            Player.LastStep = null;
-        }
+        //if (Player.LastStep != null &&
+        //    Player.LastStep.room.X == room.X &&
+        //    Player.LastStep.room.Y == room.Y)
+        //{
+            //Player.LastStep.enabled = true;
+            //Player.LastStep = null;
+        //}
+        enabled = true;
     }
 }
