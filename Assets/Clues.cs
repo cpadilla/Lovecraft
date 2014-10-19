@@ -25,7 +25,8 @@ public class Clues : MonoBehaviour
 			//int x = int.Parse(gameObject.name.Substring(6));
 			int x = Number;
 			I.Inv [x] = true;
-
+                        Rect shrek = new Rect(Player.location.X * 8, Player.location.Y * 6, Screen.width, Screen.height);
+                        GUI.Label(shrek, "Here is a block of text\nlalalala\nanother line\nI could do this all day!");
                     try
                     {
                         Sound.Play();
