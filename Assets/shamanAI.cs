@@ -48,4 +48,10 @@ public class shamanAI : MonoBehaviour {
 			period++;
 		}
 	}
+	void OnTriggerEnter2D(Collider2D obj)
+	{
+		if(obj.tag == "BulletPlayer"){
+			Destroy(gameObject);
+		}	
+	}
 }

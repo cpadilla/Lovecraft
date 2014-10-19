@@ -26,4 +26,10 @@ public class redAI : MonoBehaviour {
 			}
 		}
 	}
+	void OnTriggerEnter2D(Collider2D obj)
+	{
+		if(obj.tag == "BulletPlayer"){
+			Destroy(gameObject);
+		}	
+	}
 }

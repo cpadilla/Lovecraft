@@ -26,4 +26,10 @@ public class blueAI : MonoBehaviour {
 			transform.Translate(new Vector3 (speed * Time.deltaTime, 0, 0));
 		}
 	}
+	void OnTriggerEnter2D(Collider2D obj)
+	{
+		if(obj.tag == "BulletPlayer"){
+			Destroy(gameObject);
+		}	
+	}
 }
