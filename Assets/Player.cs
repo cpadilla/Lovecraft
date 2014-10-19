@@ -30,22 +30,11 @@ public class Player : MonoBehaviour {
                                                    Mathf.Lerp(0, Input.GetAxis("Vertical") * Speed, 0.8f));
 	}
 
-        void OnTriggerEnter2D(Collider2D obj)
-        {
-            // if obj == "Room" Playerentering rooom = true
+        void OnTriggerEnter2D(Collider2D obj){
             if (obj.tag == "Room") EnteringRoom = true;
-            //print("Hit");
         }
 
-        void OnTriggerExit2D(Collider2D obj)
-        {
-		if (gameObject.tag == "Clue")
-		{
-			Destroy(gameObject);
-		}
-
-            // if obj == "Room" Playerentering rooom = true
-            if (obj.tag == "Room") EnteringRoom = false;
-            //print("Hit");
+        void OnTriggerExit2D(Collider2D obj){
+			if (obj.tag == "Room") EnteringRoom = false;
         }
 }

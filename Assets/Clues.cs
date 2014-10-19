@@ -23,4 +23,7 @@ public class Clues : MonoBehaviour
 			I.Inv [x] = true;		
 		}
 	}
+	void OnTriggerExit2D(Collider2D obj){
+		if (obj.tag == "Player") Destroy(gameObject);
+	}
 }
