@@ -14,8 +14,7 @@ public class EnemySpawner : MonoBehaviour {
 		tile = World.TryGetTile((int)(transform.position.x)/8,((int)(transform.position.y)/6));
 		transform.parent = tile.transform;
 		int Rand = Random.Range(0,99);
-		Vector3 location = new Vector3(transform.position.x+Random.Range(-3,3),
-		                               transform.position.y+Random.Range(-2,2),0);
+		Vector3 location = transform.position;
 		Quaternion rotation = transform.rotation;
 		if(Rand < 40)
 			Instantiate(idiot, location, rotation);

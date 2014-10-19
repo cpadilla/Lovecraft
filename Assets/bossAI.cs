@@ -13,17 +13,18 @@ public class bossAI : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		target = GameObject.Find("Player").transform;
-		tile = World.TryGetTile((int)(transform.position.x)/8,((int)(transform.position.y)/6));
-		Spawner = tile.GetComponent<EnemySpawner>();
-		transform.parent = Spawner.transform;
-		x = (int)(transform.parent.position.x/8);
-		y = (int)(transform.parent.position.y/6);
-		print (x+" "+y);
+		x = (int)(transform.position.x/8);
+		y = (int)(transform.position.y/6);
+		tile = World.TryGetTile(x,y);
+		if(tile.GetComponentInChildren<EnemySpawner>() != null)
+			Spawner = tile.GetComponentInChildren<EnemySpawner>();
+		else
+			Spawner = tile.GetComponent<EnemySpawner>();
+		gameObject.transform.parent = Spawner.transform;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		print(x+" "+Player.location.X+" "+y+" "+Player.location.Y);
 		if(Player.location.X == x && Player.location.Y == y){
 			Vector3 dir = target.position - transform.position;
 			float angle = Mathf.Atan2(dir.y,dir.x) * Mathf.Rad2Deg;
